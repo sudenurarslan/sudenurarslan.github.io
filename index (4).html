@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudenur Arslan | Portfolyo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/profil.jpg" alt="Profil Fotoğrafı">
+      <div>
+        <h1>Sudenur Arslan</h1>
+        <p>Yazılım Mühendisi Adayı | Web & Mobil Geliştirici</p>
+        <button onclick="toggleDarkMode()">🌙 Mod Değiştir</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <h2>👋 Hakkımda</h2>
+    <p>Merhaba! Ben Sudenur, Yaşar Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Web, mobil uygulama geliştirme ve yazılım test otomasyonu konularına ilgi duyuyorum. Takım çalışmasına yatkın, öğrenmeye açık ve gelişime önem veren bir yazılım geliştirici adayıyım.</p>
+    <a class="cv-button" href="SudenurArslan.pdf" download>📄 CV'yi İndir</a>
+  </section>
+
+  <section class="projects">
+    <h2>📁 Projelerim</h2>
+    <div class="project-grid">
+      <!-- Tüm kartlar aynı kalıyor -->
+      <div class="card">
+        <h3>💅 Elegance Beauty Booking System</h3>
+        <p>Güzellik merkezi için online randevu sistemi. Kullanıcılar hizmetleri inceleyip randevu oluşturabilir.</p>
+        <a href="https://github.com/sudenurarslan/EleganceBeautyBookingSystem" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📍 Favorite Sites</h3>
+        <p>Gezilen yerlerin kaydedildiği, masaüstü tabanlı seyahat deneyimi uygulaması.</p>
+        <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📆 Task Planner</h3>
+        <p>MVC mimarisiyle yapılmış görev planlayıcı masaüstü uygulama.</p>
+        <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🐾 Veteriner Klinik Veritabanı</h3>
+        <p>Veteriner, müşteri, evcil hayvan ve randevu takibi için veritabanı tasarımı.</p>
+      </div>
+      <div class="card">
+        <h3>✅ Formlakal Test Otomasyonu</h3>
+        <p>Black-box ve Selenium test senaryoları ile fonksiyonel test uygulaması.</p>
+      </div>
+      <div class="card">
+        <h3>🛠️ Help Desk</h3>
+        <p>Destek taleplerinin dijital olarak yönetildiği Node.js tabanlı sistem.</p>
+        <a href="https://github.com/sudenurarslan/HelpDesk" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🐶 MyPet</h3>
+        <p>Evcil hayvan sağlık takip ve aşı kayıt uygulaması (SwiftUI).</p>
+        <a href="https://github.com/sudenurarslan/MyPet" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🔥 CaloMate</h3>
+        <p>Günlük kalori takibi sağlayan mobil sağlık uygulaması (SwiftUI).</p>
+        <a href="https://github.com/sudenurarslan/CaloMate_SwiftUI" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📦 Ürün Yönetim Sistemi</h3>
+        <p>.NET Core + Entity Framework ile geliştirilmiş stok ve ürün yönetimi sistemi.</p>
+        <a href="https://github.com/sudenurarslan/Akademi_Nisan_ProductManagement" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🧱 OOP Alıştırmaları</h3>
+        <p>C# ve temel OOP prensipleriyle yapılmış konsol tabanlı mini uygulamalar.</p>
+        <a href="https://github.com/sudenurarslan/Akademi_Nisan_OOP" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>📨 İletişim</h2>
+    <p><strong>Email:</strong> <a href="mailto:sudenurarslan13@gmail.com">sudenurarslan13@gmail.com</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/sudenurarslan" target="_blank">github.com/sudenurarslan</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sudenur-arslan-2bbb71248" target="_blank">linkedin.com/in/sudenur-arslan</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Sudenur Arslan. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
