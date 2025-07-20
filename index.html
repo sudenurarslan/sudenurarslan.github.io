@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sudenur Arslan | Portfolyo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #2c3e50;
+      transition: all 0.3s ease;
+      line-height: 1.6;
+    }
+    body.dark {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: #ecf0f1;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 20px;
+    }
+    .dark header .container {
+      background: rgba(44, 62, 80, 0.2);
+    }
+    header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #3498db;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #3498db, #e74c3c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+    .dark h2 {
+      color: #ecf0f1;
+      border-bottom-color: #85c1e9;
+    }
+    .about, .projects, .contact {
+      margin-top: 40px;
+    }
+    .projects .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-left: 5px solid #3498db;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(52, 152, 219, 0.2);
+      border-left-color: #e74c3c;
+    }
+    .dark .card {
+      background: rgba(44, 62, 80, 0.8);
+      border-left-color: #85c1e9;
+      backdrop-filter: blur(10px);
+    }
+    .dark .card:hover {
+      border-left-color: #f39c12;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cv-button {
+      display: inline-block;
+      padding: 12px 20px;
+      margin-top: 15px;
+      background: linear-gradient(45deg, #3498db, #2980b9);
+      color: white;
+      border-radius: 25px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      transition: all 0.3s ease;
+    }
+    .cv-button:hover {
+      background: linear-gradient(45deg, #2980b9, #3498db);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      text-decoration: none;
+    }
+    .dark-mode-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid #3498db;
+      color: #3498db;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    .dark-mode-btn:hover {
+      background: #3498db;
+      color: white;
+      transform: scale(1.05);
+    }
+    .dark .dark-mode-btn {
+      border-color: #85c1e9;
+      color: #85c1e9;
+    }
+    .dark .dark-mode-btn:hover {
+      background: #85c1e9;
+      color: #2c3e50;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+      color: #888;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+    .dark footer {
+      background: rgba(44, 62, 80, 0.2);
+      color: #bdc3c7;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/profil.jpg" alt="Profil Fotoğrafı">
+      <div>
+        <h1>Sudenur Arslan</h1>
+        <p>Yazılım Mühendisliği | Web & Mobil Geliştirici</p>
+        <button class="dark-mode-btn" onclick="toggleDarkMode()">🌙 Mod Değiştir</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="about">
+    <h2>👋 Hakkımda</h2>
+    <p>Merhaba! Ben Sudenur, Yaşar Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Web, mobil uygulama geliştirme ve yazılım test otomasyonu konularına ilgi duyuyorum. Takım çalışmasına yatkın, öğrenmeye açık ve gelişime önem veren bir yazılım geliştirici adayıyım.</p>
+    <a class="cv-button" href="SudenurArslan.pdf" download>📄 CV'yi İndir</a>
+  </section>
+
+  <section class="projects">
+    <h2>📁 Projelerim</h2>
+    <div class="project-grid">
+      <div class="card">
+        <h3>💅 Elegance Beauty Booking System</h3>
+        <p>Güzellik merkezi için online randevu sistemi. Kullanıcılar hizmetleri inceleyip randevu oluşturabilir.</p>
+        <a href="https://github.com/sudenurarslan/EleganceBeautyBookingSystem" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📍 Favorite Sites</h3>
+        <p>Gezilen yerlerin kaydedildiği, masaüstü tabanlı seyahat deneyimi uygulaması.</p>
+        <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📆 Task Planner</h3>
+        <p>MVC mimarisiyle yapılmış görev planlayıcı masaüstü uygulama.</p>
+        <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🐾 Veteriner Klinik Veritabanı</h3>
+        <p>Veteriner, müşteri, evcil hayvan ve randevu takibi için veritabanı tasarımı.</p>
+      </div>
+      <div class="card">
+        <h3>✅ Formlakal Test Otomasyonu</h3>
+        <p>Black-box ve Selenium test senaryoları ile fonksiyonel test uygulaması.</p>
+      </div>
+      <div class="card">
+        <h3>🛠️ Help Desk</h3>
+        <p>Destek taleplerinin dijital olarak yönetildiği masaüstü uygulama.</p>
+        <a href="https://github.com/sudenurarslan/HelpDesk" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🐶 MyPet</h3>
+        <p>Evcil hayvan sağlık takip ve aşı kayıt uygulaması (SwiftUI).</p>
+        <a href="https://github.com/sudenurarslan/MyPet" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🔥 CaloMate</h3>
+        <p>Günlük kalori takibi sağlayan mobil sağlık uygulaması (SwiftUI).</p>
+        <a href="https://github.com/sudenurarslan/CaloMate_SwiftUI" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📦 Ürün Yönetim Sistemi</h3>
+        <p>.NET Core ile geliştirilmiş stok ve ürün yönetimi sistemi.</p>
+        <a href="https://github.com/sudenurarslan/Akademi_Nisan_ProductManagement" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🧱 OOP Alıştırmaları</h3>
+        <p>C# ve temel OOP prensipleriyle yapılmış konsol tabanlı mini uygulamalar.</p>
+        <a href="https://github.com/sudenurarslan/Akademi_Nisan_OOP" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>📨 İletişim</h2>
+    <p><strong>Email:</strong> <a href="mailto:sudenurarslan13@gmail.com">sudenurarslan13@gmail.com</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/sudenurarslan" target="_blank">github.com/sudenurarslan</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sudenur-arslan-2bbb71248" target="_blank">linkedin.com/in/sudenur-arslan</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Sudenur Arslan. Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
