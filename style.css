@@ -1,3 +1,4 @@
+/* Genel Stil */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 1200px;
@@ -7,11 +8,17 @@ body {
   color: #2c3e50;
   transition: all 0.3s ease;
   line-height: 1.6;
+  cursor: url('cursor3d.png') 0 0, auto;
+  scroll-behavior: smooth;
 }
+
+/* Dark Mode */
 body.dark {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: #ecf0f1;
 }
+
+/* Header */
 header .container {
   display: flex;
   align-items: center;
@@ -38,6 +45,8 @@ header img {
 header img:hover {
   transform: scale(1.1);
 }
+
+/* Başlıklar */
 h1 {
   margin: 0;
   font-size: 2.5rem;
@@ -59,14 +68,20 @@ h2 {
   color: #ecf0f1;
   border-bottom-color: #85c1e9;
 }
+
+/* Bölümler */
 .about, .projects, .contact {
   margin-top: 40px;
 }
+
+/* Projeler Grid */
 .projects .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
+
+/* Kart Tasarımı */
 .card {
   background: rgba(255, 255, 255, 0.9);
   padding: 25px;
@@ -75,7 +90,6 @@ h2 {
   box-shadow: 0 8px 32px rgba(0,0,0,0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  transform: translateY(0);
 }
 .card:hover {
   transform: translateY(-5px);
@@ -85,21 +99,23 @@ h2 {
 .dark .card {
   background: rgba(44, 62, 80, 0.8);
   border-left-color: #85c1e9;
-  backdrop-filter: blur(10px);
 }
 .dark .card:hover {
   border-left-color: #f39c12;
 }
-.card h3 {
-  margin-top: 0;
-}
+
+/* Linkler */
 a {
   color: #3498db;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 a:hover {
   text-decoration: underline;
+  color: #e74c3c;
 }
+
+/* CV Buton */
 .cv-button {
   display: inline-block;
   padding: 12px 20px;
@@ -117,8 +133,9 @@ a:hover {
   background: linear-gradient(45deg, #2980b9, #3498db);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
-  text-decoration: none;
 }
+
+/* Dark Mode Button */
 .dark-mode-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid #3498db;
@@ -143,10 +160,8 @@ a:hover {
   background: #85c1e9;
   color: #2c3e50;
 }
-body {
-    cursor: url('cursor3d.png') 0 0, auto;
-}
 
+/* Footer */
 footer {
   text-align: center;
   padding: 30px 0;
