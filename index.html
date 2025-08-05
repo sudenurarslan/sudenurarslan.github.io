@@ -107,6 +107,20 @@
     a:hover {
       text-decoration: underline;
     }
+    .cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ff6f61;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  z-index: 9999;
+}
+
     .cv-button {
           display: inline-block;
           padding: 12px 20px;
@@ -410,6 +424,8 @@ input:checked + .slider:before {
         <a href="https://github.com/sudenurarslan/Akademi_Nisan_OOP" target="_blank">GitHub</a>
       </div>
     </div>
+    <div class="cursor"></div>
+
   </section>
 
   <section class="contact">
@@ -428,6 +444,17 @@ document.getElementById("darkToggle").addEventListener("change", function() {
   document.body.classList.toggle("dark", this.checked);
 });
 </script>
+<script>
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = `${e.clientX}px`;
+    cursor.style.top = `${e.clientY}px`;
+  });
+</script>
+</body>
 
 </body>
 </html>
