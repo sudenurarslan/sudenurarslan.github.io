@@ -126,30 +126,59 @@
       box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
       text-decoration: none;
     }
-    .dark-mode-btn {
-      background: rgba(255, 255, 255, 0.2);
-      border: 2px solid #3498db;
-      color: #3498db;
-      padding: 8px 15px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    .dark-mode-btn:hover {
-      background: #3498db;
-      color: white;
-      transform: scale(1.05);
-    }
-    .dark .dark-mode-btn {
-      border-color: #85c1e9;
-      color: #85c1e9;
-    }
-    .dark .dark-mode-btn:hover {
-      background: #85c1e9;
-      color: #2c3e50;
-    }
+    .toggle-container {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.toggle {
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.toggle .sun {
+  color: #f39c12;
+}
+
+.toggle .moon {
+  color: #f1c40f;
+}
+
+.toggle .ball {
+  width: 26px;
+  height: 26px;
+  background: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+#darkToggle {
+  display: none;
+}
+
+#darkToggle:checked + .toggle {
+  background: #4b0082;
+}
+
+#darkToggle:checked + .toggle .ball {
+  transform: translateX(30px);
+}
+
+   
     .switch {
   position: relative;
   display: inline-block;
@@ -217,10 +246,15 @@ input:checked + .slider:before {
      <div>
   <h1>Sudenur Arslan</h1>
   <p>Yazılım Mühendisliği | Web & Mobil Geliştirici</p>
-  <label class="switch">
-    <input type="checkbox" id="darkToggle">
-    <span class="slider"></span>
+  <div class="toggle-container">
+  <input type="checkbox" id="darkToggle">
+  <label for="darkToggle" class="toggle">
+    <span class="sun">🌞</span>
+    <span class="moon">🌙</span>
+    <span class="ball"></span>
   </label>
+</div>
+
 </div>
 
     </div>
