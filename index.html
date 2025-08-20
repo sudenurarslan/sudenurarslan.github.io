@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudenur Arslan | Portfolyo</title>
+  <title>Sudenur Arslan | Portfolio</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -127,102 +127,135 @@
       text-decoration: none;
     }
     .toggle-container {
-  display: flex;
-  align-items: center;
-  margin-left: 15px;
-}
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+      gap: 10px;
+    }
 
-.toggle {
-  width: 60px;
-  height: 30px;
-  background: #ccc;
-  border-radius: 50px;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5px;
-  font-size: 14px;
-  color: #fff;
-}
+    .toggle {
+      width: 60px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+      font-size: 14px;
+      color: #fff;
+    }
 
-.toggle .sun {
-  color: #f39c12;
-}
+    .toggle .sun {
+      color: #f39c12;
+    }
 
-.toggle .moon {
-  color: #f1c40f;
-}
+    .toggle .moon {
+      color: #f1c40f;
+    }
 
-.toggle .ball {
-  width: 26px;
-  height: 26px;
-  background: white;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
+    .toggle .ball {
+      width: 26px;
+      height: 26px;
+      background: white;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
 
-#darkToggle {
-  display: none;
-}
+    #darkToggle {
+      display: none;
+    }
 
-#darkToggle:checked + .toggle {
-  background: #4b0082;
-}
+    #darkToggle:checked + .toggle {
+      background: #4b0082;
+    }
 
-#darkToggle:checked + .toggle .ball {
-  transform: translateX(30px);
-}
+    #darkToggle:checked + .toggle .ball {
+      transform: translateX(30px);
+    }
 
-   
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .dark .language-switch {
+      background: rgba(44, 62, 80, 0.3);
+    }
+
+    .language-switch select {
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .language-switch select option {
+      background: #fff;
+      color: #2c3e50;
+    }
+
+    .dark .language-switch select option {
+      background: #2c3e50;
+      color: #ecf0f1;
+    }
+
     .switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
-}
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
 
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
-}
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
 
-input:checked + .slider {
-  background-color: #442f45;
-}
+    input:checked + .slider {
+      background-color: #442f45;
+    }
 
-input:checked + .slider:before {
-  transform: translateX(26px);
-}
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
 
     footer {
       text-align: center;
@@ -242,100 +275,185 @@ input:checked + .slider:before {
 <body>
   <header>
     <div class="container">
-      <img src="images/profil.jpg" alt="Profil Fotoğrafı">
-     <div>
-  <h1>Sudenur Arslan</h1>
-  <p>Yazılım Mühendisliği | Web & Mobil Geliştirici</p>
-  <div class="toggle-container">
-  <input type="checkbox" id="darkToggle">
-  <label for="darkToggle" class="toggle">
-    <span class="sun">🌞</span>
-    <span class="moon">🌙</span>
-    <span class="ball"></span>
-  </label>
-</div>
-
-</div>
-
+      <img src="images/profil.jpg" alt="Profile Photo">
+      <div>
+        <h1>Sudenur Arslan</h1>
+        <p id="subtitle">Software Engineering | Web & Mobile Developer</p>
+        <div class="toggle-container">
+          <div class="language-switch">
+            <span>🌐</span>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="tr">Türkçe</option>
+              <option value="de">Deutsch</option>
+            </select>
+          </div>
+          <input type="checkbox" id="darkToggle">
+          <label for="darkToggle" class="toggle">
+            <span class="sun">🌞</span>
+            <span class="moon">🌙</span>
+            <span class="ball"></span>
+          </label>
+        </div>
+      </div>
     </div>
   </header>
 
   <section class="about">
-    <h2>👋 Hakkımda</h2>
-    <p>Merhaba! Ben Sudenur, Yaşar Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Web, mobil uygulama geliştirme ve yazılım test otomasyonu konularına ilgi duyuyorum. Takım çalışmasına yatkın, öğrenmeye açık ve gelişime önem veren bir yazılım geliştirici adayıyım.</p>
-    <a class="cv-button" href="SudenurArslan.pdf" download>📄 CV'yi İndir</a>
+    <h2 id="aboutTitle">👋 About Me</h2>
+    <p id="aboutText">Hello! I'm Sudenur, a 3rd year Software Engineering student at Yaşar University. I'm interested in web development, mobile application development, and software test automation. I'm a software developer candidate who is team-oriented, open to learning, and values continuous improvement.</p>
+    <a class="cv-button" href="SudenurArslan.pdf" download id="cvButton">📄 Download CV</a>
   </section>
 
   <section class="projects">
-    <h2>📁 Projelerim</h2>
+    <h2 id="projectsTitle">📁 My Projects</h2>
     <div class="project-grid">
       <div class="card">
         <h3>💅 Elegance Beauty Booking System</h3>
-        <p>Güzellik merkezi için online randevu sistemi. Kullanıcılar hizmetleri inceleyip randevu oluşturabilir.</p>
+        <p id="project1">Online booking system for beauty center. Users can browse services and create appointments.</p>
         <a href="https://github.com/sudenurarslan/EleganceBeautyBookingSystem" target="_blank">GitHub</a>
       </div>
       <div class="card">
         <h3>📍 Favorite Sites</h3>
-        <p>Gezilen yerlerin kaydedildiği, masaüstü tabanlı seyahat deneyimi uygulaması.</p>
+        <p id="project2">Desktop-based travel experience application where visited places are recorded.</p>
         <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
       </div>
       <div class="card">
         <h3>📆 Task Planner</h3>
-        <p>MVC mimarisiyle yapılmış görev planlayıcı masaüstü uygulama.</p>
+        <p id="project3">Task planner desktop application built with MVC architecture.</p>
         <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
       </div>
       <div class="card">
-        <h3>🐾 Veteriner Klinik Veritabanı</h3>
-        <p>Veteriner, müşteri, evcil hayvan ve randevu takibi için veritabanı tasarımı.</p>
+        <h3>🐾 Veterinary Clinic Database</h3>
+        <p id="project4">Database design for veterinarian, customer, pet, and appointment tracking.</p>
       </div>
       <div class="card">
-        <h3>✅ Formlakal Test Otomasyonu</h3>
-        <p>Black-box ve Selenium test senaryoları ile fonksiyonel test uygulaması.</p>
+        <h3>✅ Formlakal Test Automation</h3>
+        <p id="project5">Functional testing application with black-box and Selenium test scenarios.</p>
       </div>
       <div class="card">
         <h3>🛠️ Help Desk</h3>
-        <p>Destek taleplerinin dijital olarak yönetildiği masaüstü uygulama.</p>
+        <p id="project6">Desktop application for digitally managing support requests.</p>
         <a href="https://github.com/sudenurarslan/HelpDesk" target="_blank">GitHub</a>
       </div>
       <div class="card">
         <h3>🐶 MyPet</h3>
-        <p>Evcil hayvan sağlık takip ve aşı kayıt uygulaması (SwiftUI).</p>
+        <p id="project7">Pet health tracking and vaccination record application (SwiftUI).</p>
         <a href="https://github.com/sudenurarslan/MyPet" target="_blank">GitHub</a>
       </div>
       <div class="card">
         <h3>🔥 CaloMate</h3>
-        <p>Günlük kalori takibi sağlayan mobil sağlık uygulaması (SwiftUI).</p>
+        <p id="project8">Mobile health application that provides daily calorie tracking (SwiftUI).</p>
         <a href="https://github.com/sudenurarslan/CaloMate_SwiftUI" target="_blank">GitHub</a>
       </div>
       <div class="card">
-        <h3>📦 Ürün Yönetim Sistemi</h3>
-        <p>.NET Core ile geliştirilmiş stok ve ürün yönetimi sistemi.</p>
+        <h3>📦 Product Management System</h3>
+        <p id="project9">Inventory and product management system developed with .NET Core.</p>
         <a href="https://github.com/sudenurarslan/Akademi_Nisan_ProductManagement" target="_blank">GitHub</a>
       </div>
       <div class="card">
-        <h3>🧱 OOP Alıştırmaları</h3>
-        <p>C# ve temel OOP prensipleriyle yapılmış konsol tabanlı mini uygulamalar.</p>
+        <h3>🧱 OOP Exercises</h3>
+        <p id="project10">Console-based mini applications built with C# and basic OOP principles.</p>
         <a href="https://github.com/sudenurarslan/Akademi_Nisan_OOP" target="_blank">GitHub</a>
       </div>
     </div>
   </section>
 
   <section class="contact">
-    <h2>📨 İletişim</h2>
-    <p><strong>Email:</strong> <a href="mailto:sudenurarslan13@gmail.com">sudenurarslan13@gmail.com</a></p>
+    <h2 id="contactTitle">📨 Contact</h2>
+    <p><strong id="emailLabel">Email:</strong> <a href="mailto:sudenurarslan13@gmail.com">sudenurarslan13@gmail.com</a></p>
     <p><strong>GitHub:</strong> <a href="https://github.com/sudenurarslan" target="_blank">github.com/sudenurarslan</a></p>
     <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sudenur-arslan-2bbb71248" target="_blank">linkedin.com/in/sudenur-arslan</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Sudenur Arslan. Tüm hakları saklıdır.</p>
+    <p id="footerText">© 2025 Sudenur Arslan. All rights reserved.</p>
   </footer>
 
   <script>
-document.getElementById("darkToggle").addEventListener("change", function() {
-  document.body.classList.toggle("dark", this.checked);
-});
-</script>
+    const translations = {
+      en: {
+        subtitle: "Software Engineering | Web & Mobile Developer",
+        aboutTitle: "👋 About Me",
+        aboutText: "Hello! I'm Sudenur, a 3rd year Software Engineering student at Yaşar University. I'm interested in web development, mobile application development, and software test automation. I'm a software developer candidate who is team-oriented, open to learning, and values continuous improvement.",
+        cvButton: "📄 Download CV",
+        projectsTitle: "📁 My Projects",
+        project1: "Online booking system for beauty center. Users can browse services and create appointments.",
+        project2: "Desktop-based travel experience application where visited places are recorded.",
+        project3: "Task planner desktop application built with MVC architecture.",
+        project4: "Database design for veterinarian, customer, pet, and appointment tracking.",
+        project5: "Functional testing application with black-box and Selenium test scenarios.",
+        project6: "Desktop application for digitally managing support requests.",
+        project7: "Pet health tracking and vaccination record application (SwiftUI).",
+        project8: "Mobile health application that provides daily calorie tracking (SwiftUI).",
+        project9: "Inventory and product management system developed with .NET Core.",
+        project10: "Console-based mini applications built with C# and basic OOP principles.",
+        contactTitle: "📨 Contact",
+        emailLabel: "Email:",
+        footerText: "© 2025 Sudenur Arslan. All rights reserved."
+      },
+      tr: {
+        subtitle: "Yazılım Mühendisliği | Web & Mobil Geliştirici",
+        aboutTitle: "👋 Hakkımda",
+        aboutText: "Merhaba! Ben Sudenur, Yaşar Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Web, mobil uygulama geliştirme ve yazılım test otomasyonu konularına ilgi duyuyorum. Takım çalışmasına yatkın, öğrenmeye açık ve gelişime önem veren bir yazılım geliştirici adayıyım.",
+        cvButton: "📄 CV'yi İndir",
+        projectsTitle: "📁 Projelerim",
+        project1: "Güzellik merkezi için online randevu sistemi. Kullanıcılar hizmetleri inceleyip randevu oluşturabilir.",
+        project2: "Gezilen yerlerin kaydedildiği, masaüstü tabanlı seyahat deneyimi uygulaması.",
+        project3: "MVC mimarisiyle yapılmış görev planlayıcı masaüstü uygulama.",
+        project4: "Veteriner, müşteri, evcil hayvan ve randevu takibi için veritabanı tasarımı.",
+        project5: "Black-box ve Selenium test senaryoları ile fonksiyonel test uygulaması.",
+        project6: "Destek taleplerinin dijital olarak yönetildiği masaüstü uygulama.",
+        project7: "Evcil hayvan sağlık takip ve aşı kayıt uygulaması (SwiftUI).",
+        project8: "Günlük kalori takibi sağlayan mobil sağlık uygulaması (SwiftUI).",
+        project9: ".NET Core ile geliştirilmiş stok ve ürün yönetimi sistemi.",
+        project10: "C# ve temel OOP prensipleriyle yapılmış konsol tabanlı mini uygulamalar.",
+        contactTitle: "📨 İletişim",
+        emailLabel: "Email:",
+        footerText: "© 2025 Sudenur Arslan. Tüm hakları saklıdır."
+      },
+      de: {
+        subtitle: "Software Engineering | Web- & Mobile-Entwickler",
+        aboutTitle: "👋 Über mich",
+        aboutText: "Hallo! Ich bin Sudenur, Studentin im 3. Jahr Software Engineering an der Yaşar Universität. Ich interessiere mich für Webentwicklung, mobile App-Entwicklung und Software-Testautomatisierung. Ich bin eine angehende Softwareentwicklerin, die teamorientiert ist, lernbereit und kontinuierliche Verbesserung schätzt.",
+        cvButton: "📄 Lebenslauf herunterladen",
+        projectsTitle: "📁 Meine Projekte",
+        project1: "Online-Buchungssystem für Schönheitszentrum. Benutzer können Dienstleistungen durchsuchen und Termine erstellen.",
+        project2: "Desktop-basierte Reiseerlebnis-Anwendung, in der besuchte Orte aufgezeichnet werden.",
+        project3: "Desktop-Anwendung für Aufgabenplanung mit MVC-Architektur entwickelt.",
+        project4: "Datenbankdesign für Tierarzt-, Kunden-, Haustier- und Terminverfolgung.",
+        project5: "Funktionstest-Anwendung mit Black-Box- und Selenium-Testszenarien.",
+        project6: "Desktop-Anwendung zur digitalen Verwaltung von Support-Anfragen.",
+        project7: "Haustier-Gesundheitsverfolgung und Impfaufzeichnungs-Anwendung (SwiftUI).",
+        project8: "Mobile Gesundheits-App für tägliche Kalorienverfolgung (SwiftUI).",
+        project9: "Bestands- und Produktverwaltungssystem entwickelt mit .NET Core.",
+        project10: "Konsolen-basierte Mini-Anwendungen mit C# und grundlegenden OOP-Prinzipien.",
+        contactTitle: "📨 Kontakt",
+        emailLabel: "E-Mail:",
+        footerText: "© 2025 Sudenur Arslan. Alle Rechte vorbehalten."
+      }
+    };
+
+    document.getElementById("darkToggle").addEventListener("change", function() {
+      document.body.classList.toggle("dark", this.checked);
+    });
+
+    document.getElementById("languageSelect").addEventListener("change", function() {
+      const selectedLang = this.value;
+      const translation = translations[selectedLang];
+      
+      // Update document language
+      document.documentElement.lang = selectedLang;
+      
+      // Update all translatable elements
+      Object.keys(translation).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+          element.textContent = translation[key];
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
