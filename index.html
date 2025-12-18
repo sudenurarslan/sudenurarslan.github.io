@@ -3,743 +3,457 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sudenur Arslan | Dev Portfolio Dashboard</title>
-
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            bg: "#EEF0F7",
-            panel: "#FFFFFF",
-            stroke: "#E6E8F2",
-            text: "#0F172A",
-            muted: "#6B7280",
-            primary: "#6D28D9",
-            primarySoft: "#F1EAFE",
-            green: "#22C55E",
-            orange: "#F59E0B",
-            blue: "#3B82F6",
-          },
-          boxShadow: {
-            soft: "0 10px 30px rgba(15,23,42,0.08)",
-            card: "0 10px 24px rgba(15,23,42,0.06)",
-          },
-          borderRadius: { xl2: "22px" }
-        }
-      }
-    }
-  </script>
-
+  <title>Sudenur Arslan | Portfolio</title>
   <style>
-    .dot-bg {
-      background-image: radial-gradient(rgba(148,163,184,.35) 1px, transparent 1px);
-      background-size: 18px 18px;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      color: #2c3e50;
+      transition: all 0.3s ease;
+      line-height: 1.6;
     }
-    /* Donut */
-    .donut {
-      width: 170px;
-      height: 170px;
-      border-radius: 9999px;
-      background: conic-gradient(#6D28D9 0 46%, #4F46E5 46% 76%, #CBD5E1 76% 100%);
+    body.dark {
+      background: linear-gradient(135deg, #000000 0%, #daafdd 100%);
+      color: #ecf0f1;
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      margin-bottom: 20px;
+    }
+    .dark header .container {
+      background: rgba(44, 62, 80, 0.2);
+    }
+    header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid #b365cc;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
+    }
+    h1 {
+           margin: 0;
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #b18ead, #b251a2);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #2c3e50;
+      border-bottom: 2px solid #be91c4;
+      padding-bottom: 10px;
+      display: inline-block;
+    }
+    .dark h2 {
+      color: #ecf0f1;
+      border-bottom-color: #606060;
+    }
+    .about, .projects, .contact {
+      margin-top: 40px;
+    }
+    .projects .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-left: 5px solid #9b73a3;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(52, 152, 219, 0.2);
+      border-left-color: #1b0f1a;
+    }
+    .dark .card {
+      background: rgba(44, 62, 80, 0.8);
+      border-left-color: #460746;
+      backdrop-filter: blur(10px);
+    }
+    .dark .card:hover {
+      border-left-color: #460746;
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+    a {
+      color: #000000;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .cv-button {
+          display: inline-block;
+          padding: 12px 20px;
+          margin-top: 15px;
+          background: linear-gradient(249deg, #d9aede, #460746);
+          color: white;
+          border-radius: 25px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+          transition: all 0.3s ease;
+    }
+    .cv-button:hover {
+      background: linear-gradient(45deg, #460746, #460746);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      text-decoration: none;
+    }
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+      gap: 10px;
+    }
+
+    .toggle {
+      width: 60px;
+      height: 30px;
+      background: #ccc;
+      border-radius: 50px;
       position: relative;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+      font-size: 14px;
+      color: #fff;
     }
-    .donut::after {
-      content: "";
+
+    .toggle .sun {
+      color: #f39c12;
+    }
+
+    .toggle .moon {
+      color: #f1c40f;
+    }
+
+    .toggle .ball {
+      width: 26px;
+      height: 26px;
+      background: white;
       position: absolute;
-      inset: 20px;
-      background: #fff;
-      border-radius: 9999px;
-      box-shadow: inset 0 0 0 1px #E6E8F2;
+      top: 2px;
+      left: 2px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
     }
-    .donut-center {
-      position: absolute; inset: 0;
-      display: grid; place-items: center;
-      z-index: 1; text-align: center;
+
+    #darkToggle {
+      display: none;
+    }
+
+    #darkToggle:checked + .toggle {
+      background: #4b0082;
+    }
+
+    #darkToggle:checked + .toggle .ball {
+      transform: translateX(30px);
+    }
+
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 8px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .dark .language-switch {
+      background: rgba(44, 62, 80, 0.3);
+    }
+
+    .language-switch select {
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .language-switch select option {
+      background: #fff;
+      color: #2c3e50;
+    }
+
+    .dark .language-switch select option {
+      background: #2c3e50;
+      color: #ecf0f1;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #442f45;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+      color: #888;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+    }
+    .dark footer {
+      background: rgba(44, 62, 80, 0.2);
+      color: #bdc3c7;
     }
   </style>
 </head>
-
-<body class="bg-bg dot-bg min-h-screen p-6">
-  <div class="mx-auto max-w-[1320px] bg-panel rounded-[26px] shadow-soft border border-stroke overflow-hidden">
-    <div class="flex min-h-[860px]">
-
-      <!-- SIDEBAR -->
-      <aside class="w-[290px] border-r border-stroke p-6 flex flex-col gap-6">
-        <div class="flex items-center gap-3">
-          <div class="h-12 w-12 rounded-full bg-primarySoft grid place-items-center border border-stroke">
-            <span class="text-primary font-bold">SA</span>
+<body>
+  <header>
+    <div class="container">
+      <img src="images/profil.jpg" alt="Profile Photo">
+      <div>
+        <h1>Sudenur Arslan</h1>
+        <p id="subtitle">Software Engineering | Web & Mobile Developer</p>
+        <div class="toggle-container">
+          <div class="language-switch">
+            <span>🌐</span>
+            <select id="languageSelect">
+              <option value="en">English</option>
+              <option value="tr">Türkçe</option>
+              <option value="de">Deutsch</option>
+            </select>
           </div>
-          <div>
-            <div class="font-semibold text-text leading-tight">Sudenur Arslan</div>
-            <div class="text-sm text-muted -mt-0.5">Portfolio Panel</div>
-          </div>
+          <input type="checkbox" id="darkToggle">
+          <label for="darkToggle" class="toggle">
+            <span class="sun">🌞</span>
+            <span class="moon">🌙</span>
+            <span class="ball"></span>
+          </label>
         </div>
-
-        <nav class="flex flex-col gap-2" id="nav">
-          <button data-view="dashboard" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl bg-primarySoft text-primary font-semibold">
-            <span class="inline-block h-5 w-5 rounded-md bg-primary/15"></span>
-            Dashboard
-          </button>
-
-          <button data-view="projects" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-            Projects
-          </button>
-
-          <button data-view="skills" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-            Skills & Tech
-          </button>
-
-          <button data-view="about" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-            About
-          </button>
-
-          <button data-view="contact" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-            Contact
-          </button>
-
-          <button data-view="messages" class="nav-btn flex items-center justify-between gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <div class="flex items-center gap-3">
-              <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-              Messages
-            </div>
-            <span class="h-6 min-w-[26px] px-2 grid place-items-center text-xs font-semibold rounded-full bg-primary text-white">3</span>
-          </button>
-
-          <button data-view="analytics" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-            Analytics
-          </button>
-
-          <button data-view="settings" class="nav-btn flex items-center gap-3 px-4 py-3 rounded-xl text-muted hover:bg-slate-50">
-            <span class="inline-block h-5 w-5 rounded-md bg-slate-200"></span>
-            Settings
-          </button>
-        </nav>
-
-        <div class="mt-auto space-y-3">
-          <a href="SudenurArslan.pdf" download
-             class="w-full flex items-center justify-center gap-2 rounded-xl bg-primary text-white py-3 font-semibold shadow-sm">
-            <span class="inline-block h-4 w-4 rounded bg-white/30"></span>
-            Download CV
-          </a>
-
-          <button class="w-full flex items-center justify-center gap-2 rounded-xl border border-stroke py-3 text-muted hover:bg-slate-50">
-            <span class="inline-block h-4 w-4 rounded bg-slate-300"></span>
-            Logout
-          </button>
-        </div>
-      </aside>
-
-      <!-- MAIN -->
-      <main class="flex-1 p-8">
-        <!-- Top bar -->
-        <div class="flex items-center justify-between">
-          <div>
-            <h1 class="text-2xl font-semibold text-text" id="pageTitle">Dashboard Overview</h1>
-            <p class="text-muted" id="pageSubtitle">Welcome back. Here’s what’s happening today.</p>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <button class="h-11 w-11 rounded-full border border-stroke bg-white grid place-items-center">
-              <span class="inline-block h-5 w-5 rounded bg-slate-200"></span>
-            </button>
-
-            <div class="flex items-center gap-3 rounded-full border border-stroke bg-white px-3 py-2">
-              <div class="h-8 w-8 rounded-full bg-primarySoft border border-stroke"></div>
-              <div class="text-sm font-semibold text-text">Sudenur</div>
-              <span class="inline-block h-4 w-4 rounded bg-slate-200"></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- VIEWS -->
-        <div class="mt-8">
-
-          <!-- DASHBOARD -->
-          <section id="view-dashboard" class="view">
-            <!-- KPI cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-5">
-                <div class="flex items-start justify-between">
-                  <div>
-                    <div class="text-sm text-muted font-medium">Total Projects</div>
-                    <div class="text-3xl font-semibold text-text mt-2" id="kpiTotalProjects">10</div>
-                  </div>
-                  <div class="h-11 w-11 rounded-full bg-primarySoft grid place-items-center border border-stroke">
-                    <span class="h-4 w-4 rounded bg-primary/30"></span>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-green font-medium">↗ Portfolio updated</div>
-              </div>
-
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-5">
-                <div class="flex items-start justify-between">
-                  <div>
-                    <div class="text-sm text-muted font-medium">Featured Projects</div>
-                    <div class="text-3xl font-semibold text-text mt-2" id="kpiFeatured">4</div>
-                  </div>
-                  <div class="h-11 w-11 rounded-full bg-slate-50 grid place-items-center border border-stroke">
-                    <span class="h-4 w-4 rounded bg-blue/40"></span>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-muted font-medium">Pinned highlights</div>
-              </div>
-
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-5">
-                <div class="flex items-start justify-between">
-                  <div>
-                    <div class="text-sm text-muted font-medium">Tech Used</div>
-                    <div class="text-3xl font-semibold text-text mt-2" id="kpiTechUsed">15</div>
-                  </div>
-                  <div class="h-11 w-11 rounded-full bg-primarySoft grid place-items-center border border-stroke">
-                    <span class="h-4 w-4 rounded bg-primary/30"></span>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-green font-medium">+ 1 new skill added</div>
-              </div>
-
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-5">
-                <div class="flex items-start justify-between">
-                  <div>
-                    <div class="text-sm text-muted font-medium">Portfolio Views</div>
-                    <div class="text-3xl font-semibold text-text mt-2">1.2k</div>
-                  </div>
-                  <div class="h-11 w-11 rounded-full bg-orange/10 grid place-items-center border border-stroke">
-                    <span class="h-4 w-4 rounded bg-orange/50"></span>
-                  </div>
-                </div>
-                <div class="mt-4 text-sm text-green font-medium">↗ +12% vs last mo</div>
-              </div>
-            </div>
-
-            <!-- Middle grid -->
-            <div class="mt-6 grid grid-cols-1 xl:grid-cols-3 gap-5">
-              <!-- Quick Actions + Latest Messages -->
-              <div class="space-y-5">
-                <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                  <h3 class="font-semibold text-text">Quick Actions</h3>
-                  <div class="mt-4 space-y-3">
-                    <button class="w-full flex items-center justify-between rounded-xl bg-primary text-white px-4 py-3 font-semibold shadow-sm" onclick="setView('projects')">
-                      <div class="flex items-center gap-3">
-                        <span class="h-7 w-7 rounded-full bg-white/15 grid place-items-center">+</span>
-                        View Projects
-                      </div>
-                      <span>→</span>
-                    </button>
-
-                    <button class="w-full flex items-center justify-between rounded-xl border border-stroke bg-white px-4 py-3 text-text font-semibold hover:bg-slate-50" onclick="setView('skills')">
-                      <div class="flex items-center gap-3">
-                        <span class="h-7 w-7 rounded-full bg-primarySoft grid place-items-center border border-stroke">🎓</span>
-                        View Skills
-                      </div>
-                      <span class="text-muted">→</span>
-                    </button>
-
-                    <button class="w-full flex items-center justify-between rounded-xl border border-stroke bg-white px-4 py-3 text-text font-semibold hover:bg-slate-50" onclick="setView('about')">
-                      <div class="flex items-center gap-3">
-                        <span class="h-7 w-7 rounded-full bg-primarySoft grid place-items-center border border-stroke">✎</span>
-                        About Me
-                      </div>
-                      <span class="text-muted">→</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                  <div class="flex items-center justify-between">
-                    <h3 class="font-semibold text-text">Latest Messages</h3>
-                    <button class="text-primary text-sm font-semibold hover:underline" onclick="setView('messages')">View All</button>
-                  </div>
-
-                  <div class="mt-4 space-y-4">
-                    <div class="flex items-center gap-3">
-                      <div class="h-10 w-10 rounded-full bg-primarySoft border border-stroke grid place-items-center font-bold text-primary">JD</div>
-                      <div class="min-w-0">
-                        <div class="flex items-center justify-between gap-2">
-                          <div class="font-semibold text-sm text-text">John Doe</div>
-                          <div class="text-xs text-muted">2m ago</div>
-                        </div>
-                        <div class="text-sm text-muted truncate max-w-[260px]">Hey, I loved your portfolio! Are you open to an internship?</div>
-                      </div>
-                    </div>
-
-                    <div class="flex items-center gap-3">
-                      <div class="h-10 w-10 rounded-full bg-purple-50 border border-stroke grid place-items-center font-bold text-primary">SM</div>
-                      <div class="min-w-0">
-                        <div class="flex items-center justify-between gap-2">
-                          <div class="font-semibold text-sm text-text">Sarah Miller</div>
-                          <div class="text-xs text-muted">1h ago</div>
-                        </div>
-                        <div class="text-sm text-muted truncate max-w-[260px]">Regarding the freelance opportunity, can we schedule a call?</div>
-                      </div>
-                    </div>
-
-                    <div class="flex items-center gap-3">
-                      <div class="h-10 w-10 rounded-full bg-green-50 border border-stroke grid place-items-center font-bold text-green">TC</div>
-                      <div class="min-w-0">
-                        <div class="flex items-center justify-between gap-2">
-                          <div class="font-semibold text-sm text-text">Tech Corp</div>
-                          <div class="text-xs text-muted">1d ago</div>
-                        </div>
-                        <div class="text-sm text-muted truncate max-w-[260px]">Interview scheduled for next Tuesday. Please confirm.</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Portfolio Views chart -->
-              <div class="xl:col-span-2 rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                <div class="flex items-center justify-between">
-                  <div>
-                    <h3 class="font-semibold text-text">Portfolio Views</h3>
-                    <p class="text-sm text-muted">Traffic over the last 30 days</p>
-                  </div>
-                  <div class="flex items-center gap-2 rounded-full border border-stroke bg-slate-50 px-2 py-1">
-                    <button class="px-3 py-1 rounded-full text-sm text-muted hover:bg-white">7d</button>
-                    <button class="px-3 py-1 rounded-full text-sm font-semibold bg-white border border-stroke text-primary">30d</button>
-                    <button class="px-3 py-1 rounded-full text-sm text-muted hover:bg-white">90d</button>
-                  </div>
-                </div>
-
-                <div class="mt-6 h-[330px] rounded-2xl bg-slate-50 border border-stroke p-5 flex flex-col justify-end">
-                  <div class="grid grid-cols-7 gap-3 items-end h-full">
-                    <div class="h-[40%] bg-slate-200 rounded-xl"></div>
-                    <div class="h-[62%] bg-slate-200 rounded-xl"></div>
-                    <div class="h-[50%] bg-slate-200 rounded-xl"></div>
-                    <div class="h-[70%] bg-slate-200 rounded-xl"></div>
-                    <div class="h-[58%] bg-slate-200 rounded-xl"></div>
-                    <div class="h-[66%] bg-slate-200 rounded-xl"></div>
-                    <div class="h-[86%] bg-primary rounded-xl"></div>
-                  </div>
-                  <div class="mt-4 flex justify-between text-xs text-muted">
-                    <span>1 Nov</span>
-                    <span>Today</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom grid -->
-            <div class="mt-5 grid grid-cols-1 xl:grid-cols-3 gap-5">
-              <div class="xl:col-span-2 rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                <h3 class="font-semibold text-text">Projects by Tech</h3>
-
-                <div class="mt-5 space-y-5">
-                  <div>
-                    <div class="flex justify-between text-sm">
-                      <span class="font-semibold text-text">Web (HTML/CSS/JS, .NET)</span>
-                      <span class="text-muted">4 projects</span>
-                    </div>
-                    <div class="mt-2 h-2 rounded-full bg-slate-100 overflow-hidden">
-                      <div class="h-full w-[60%] bg-blue rounded-full"></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="flex justify-between text-sm">
-                      <span class="font-semibold text-text">Mobile (SwiftUI)</span>
-                      <span class="text-muted">2 projects</span>
-                    </div>
-                    <div class="mt-2 h-2 rounded-full bg-slate-100 overflow-hidden">
-                      <div class="h-full w-[35%] bg-green rounded-full"></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="flex justify-between text-sm">
-                      <span class="font-semibold text-text">Testing / Automation</span>
-                      <span class="text-muted">1 project</span>
-                    </div>
-                    <div class="mt-2 h-2 rounded-full bg-slate-100 overflow-hidden">
-                      <div class="h-full w-[20%] bg-orange rounded-full"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                <h3 class="font-semibold text-text">Skill Distribution</h3>
-
-                <div class="mt-5 flex flex-col items-center gap-5">
-                  <div class="donut">
-                    <div class="donut-center">
-                      <div class="text-3xl font-semibold text-text" id="skillsCount">15</div>
-                      <div class="text-xs text-muted font-semibold tracking-wide">SKILLS</div>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center gap-4 text-sm">
-                    <div class="flex items-center gap-2">
-                      <span class="h-2.5 w-2.5 rounded-full bg-primary"></span>
-                      <span class="text-muted">Front</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <span class="h-2.5 w-2.5 rounded-full bg-indigo-600"></span>
-                      <span class="text-muted">Back</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <span class="h-2.5 w-2.5 rounded-full bg-slate-300"></span>
-                      <span class="text-muted">Other</span>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- PROJECTS -->
-          <section id="view-projects" class="view hidden">
-            <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-              <div class="flex items-center justify-between">
-                <h3 class="font-semibold text-text text-lg">My Projects</h3>
-                <input id="projectSearch" class="w-72 rounded-xl border-stroke" placeholder="Search project..." />
-              </div>
-
-              <div class="mt-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4" id="projectsGrid"></div>
-            </div>
-          </section>
-
-          <!-- SKILLS -->
-          <section id="view-skills" class="view hidden">
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-5">
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                <h3 class="font-semibold text-text text-lg">Skills & Tech</h3>
-                <p class="text-muted text-sm mt-1">Edit these later to match your CV exactly.</p>
-
-                <div class="mt-4 flex flex-wrap gap-2" id="skillsChips"></div>
-              </div>
-
-              <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-                <h3 class="font-semibold text-text text-lg">Focus Areas</h3>
-
-                <div class="mt-5 space-y-4">
-                  <div class="p-4 rounded-xl border border-stroke bg-slate-50">
-                    <div class="font-semibold text-text">Web Development</div>
-                    <div class="text-sm text-muted">Frontend UI, dashboards, CRUD apps.</div>
-                  </div>
-                  <div class="p-4 rounded-xl border border-stroke bg-slate-50">
-                    <div class="font-semibold text-text">Mobile Development</div>
-                    <div class="text-sm text-muted">SwiftUI projects + Flutter learning.</div>
-                  </div>
-                  <div class="p-4 rounded-xl border border-stroke bg-slate-50">
-                    <div class="font-semibold text-text">Testing & QA</div>
-                    <div class="text-sm text-muted">Selenium test automation and functional testing.</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- ABOUT -->
-          <section id="view-about" class="view hidden">
-            <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-              <h3 class="font-semibold text-text text-lg mb-2">About Me</h3>
-              <p class="text-muted leading-relaxed" id="aboutText">
-                Hello! I'm Sudenur, a 3rd year Software Engineering student at Yaşar University. I'm interested in web development, mobile application development, and software test automation. I'm a software developer candidate who is team-oriented, open to learning, and values continuous improvement.
-              </p>
-            </div>
-          </section>
-
-          <!-- CONTACT -->
-          <section id="view-contact" class="view hidden">
-            <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-              <h3 class="font-semibold text-text text-lg">Contact</h3>
-              <div class="mt-4 space-y-3 text-sm">
-                <p><span class="font-semibold text-text">Email:</span>
-                  <a class="text-primary font-semibold hover:underline" href="mailto:sudenurarslan13@gmail.com">sudenurarslan13@gmail.com</a>
-                </p>
-                <p><span class="font-semibold text-text">GitHub:</span>
-                  <a class="text-primary font-semibold hover:underline" href="https://github.com/sudenurarslan" target="_blank" rel="noreferrer">github.com/sudenurarslan</a>
-                </p>
-                <p><span class="font-semibold text-text">LinkedIn:</span>
-                  <a class="text-primary font-semibold hover:underline" href="https://www.linkedin.com/in/sudenur-arslan-2bbb71248" target="_blank" rel="noreferrer">linkedin.com/in/sudenur-arslan-2bbb71248</a>
-                </p>
-              </div>
-              <p class="mt-6 text-xs text-muted">© 2025 Sudenur Arslan. All rights reserved.</p>
-            </div>
-          </section>
-
-          <!-- MESSAGES -->
-          <section id="view-messages" class="view hidden">
-            <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-              <h3 class="font-semibold text-text text-lg">Messages</h3>
-              <p class="text-muted text-sm mt-1">Demo inbox (later you can connect a form).</p>
-
-              <div class="mt-5 space-y-3">
-                <div class="p-4 rounded-xl border border-stroke">
-                  <div class="flex justify-between text-sm">
-                    <span class="font-semibold text-text">John Doe</span>
-                    <span class="text-muted">2m ago</span>
-                  </div>
-                  <p class="text-muted mt-1">Hey, I loved your portfolio! Are you open to an internship?</p>
-                </div>
-
-                <div class="p-4 rounded-xl border border-stroke">
-                  <div class="flex justify-between text-sm">
-                    <span class="font-semibold text-text">Sarah Miller</span>
-                    <span class="text-muted">1h ago</span>
-                  </div>
-                  <p class="text-muted mt-1">Regarding the freelance opportunity, can we schedule a call?</p>
-                </div>
-
-                <div class="p-4 rounded-xl border border-stroke">
-                  <div class="flex justify-between text-sm">
-                    <span class="font-semibold text-text">Tech Corp</span>
-                    <span class="text-muted">1d ago</span>
-                  </div>
-                  <p class="text-muted mt-1">Interview scheduled for next Tuesday. Please confirm.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- ANALYTICS -->
-          <section id="view-analytics" class="view hidden">
-            <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-              <h3 class="font-semibold text-text text-lg">Analytics</h3>
-              <p class="text-muted text-sm mt-1">Static demo (you can later connect GA/umami).</p>
-
-              <div class="mt-5 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="p-5 rounded-xl border border-stroke bg-slate-50">
-                  <div class="text-sm text-muted font-medium">Weekly Views</div>
-                  <div class="text-2xl font-semibold text-text mt-2">320</div>
-                </div>
-                <div class="p-5 rounded-xl border border-stroke bg-slate-50">
-                  <div class="text-sm text-muted font-medium">Avg. Time</div>
-                  <div class="text-2xl font-semibold text-text mt-2">01:24</div>
-                </div>
-                <div class="p-5 rounded-xl border border-stroke bg-slate-50">
-                  <div class="text-sm text-muted font-medium">Clicks (GitHub)</div>
-                  <div class="text-2xl font-semibold text-text mt-2">76</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- SETTINGS -->
-          <section id="view-settings" class="view hidden">
-            <div class="rounded-xl2 bg-white border border-stroke shadow-card p-6">
-              <h3 class="font-semibold text-text text-lg">Settings</h3>
-              <p class="text-muted text-sm mt-1">This is a UI placeholder.</p>
-
-              <div class="mt-5 space-y-4">
-                <div class="p-4 rounded-xl border border-stroke">
-                  <div class="font-semibold text-text">Theme</div>
-                  <div class="text-sm text-muted">Light theme (current). Dark theme eklemek istersen bir sonraki adımda ekleyelim.</div>
-                </div>
-                <div class="p-4 rounded-xl border border-stroke">
-                  <div class="font-semibold text-text">Profile</div>
-                  <div class="text-sm text-muted">Profile photo path: <code class="bg-slate-100 px-2 py-1 rounded">images/profil.jpg</code></div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-        </div>
-      </main>
+      </div>
     </div>
-  </div>
+  </header>
+
+  <section class="about">
+    <h2 id="aboutTitle">👋 About Me</h2>
+    <p id="aboutText">Hello! I'm Sudenur, a 3rd year Software Engineering student at Yaşar University. I'm interested in web development, mobile application development, and software test automation. I'm a software developer candidate who is team-oriented, open to learning, and values continuous improvement.</p>
+    <a class="cv-button" href="SudenurArslan.pdf" download id="cvButton">📄 Download CV</a>
+  </section>
+
+  <section class="projects">
+    <h2 id="projectsTitle">📁 My Projects</h2>
+    <div class="project-grid">
+      <div class="card">
+        <h3>💅 Elegance Beauty Booking System</h3>
+        <p id="project1">Online booking system for beauty center. Users can browse services and create appointments.</p>
+        <a href="https://github.com/sudenurarslan/EleganceBeautyBookingSystem" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📍 Favorite Sites</h3>
+        <p id="project2">Desktop-based travel experience application where visited places are recorded.</p>
+        <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📆 Task Planner</h3>
+        <p id="project3">Task planner desktop application built with MVC architecture.</p>
+        <a href="https://github.com/sudenurarslan" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🐾 Veterinary Clinic Database</h3>
+        <p id="project4">Database design for veterinarian, customer, pet, and appointment tracking.</p>
+      </div>
+      <div class="card">
+        <h3>✅ Formlakal Test Automation</h3>
+        <p id="project5">Functional testing application with black-box and Selenium test scenarios.</p>
+      </div>
+      <div class="card">
+        <h3>🛠️ Help Desk</h3>
+        <p id="project6">Desktop application for digitally managing support requests.</p>
+        <a href="https://github.com/sudenurarslan/HelpDesk" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🐶 MyPet</h3>
+        <p id="project7">Pet health tracking and vaccination record application (SwiftUI).</p>
+        <a href="https://github.com/sudenurarslan/MyPet" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🔥 CaloMate</h3>
+        <p id="project8">Mobile health application that provides daily calorie tracking (SwiftUI).</p>
+        <a href="https://github.com/sudenurarslan/CaloMate_SwiftUI" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>📦 Product Management System</h3>
+        <p id="project9">Inventory and product management system developed with .NET Core.</p>
+        <a href="https://github.com/sudenurarslan/Akademi_Nisan_ProductManagement" target="_blank">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>🧱 OOP Exercises</h3>
+        <p id="project10">Console-based mini applications built with C# and basic OOP principles.</p>
+        <a href="https://github.com/sudenurarslan/Akademi_Nisan_OOP" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2 id="contactTitle">📨 Contact</h2>
+    <p><strong id="emailLabel">Email:</strong> <a href="mailto:sudenurarslan13@gmail.com">sudenurarslan13@gmail.com</a></p>
+    <p><strong>GitHub:</strong> <a href="https://github.com/sudenurarslan" target="_blank">github.com/sudenurarslan</a></p>
+    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sudenur-arslan-2bbb71248" target="_blank">linkedin.com/in/sudenur-arslan</a></p>
+  </section>
+
+  <footer>
+    <p id="footerText">© 2025 Sudenur Arslan. All rights reserved.</p>
+  </footer>
 
   <script>
-    // ---------------------------
-    // DATA (from your portfolio)
-    // ---------------------------
-    const projects = [
-      {
-        title: "Elegance Beauty Booking System",
-        icon: "💅",
-        desc: "Online booking system for beauty center. Users can browse services and create appointments.",
-        link: "https://github.com/sudenurarslan/EleganceBeautyBookingSystem",
-        tag: "Web"
+    const translations = {
+      en: {
+        subtitle: "Software Engineering | Web & Mobile Developer",
+        aboutTitle: "👋 About Me",
+        aboutText: "Hello! I'm Sudenur, a 3rd year Software Engineering student at Yaşar University. I'm interested in web development, mobile application development, and software test automation. I'm a software developer candidate who is team-oriented, open to learning, and values continuous improvement.",
+        cvButton: "📄 Download CV",
+        projectsTitle: "📁 My Projects",
+        project1: "Online booking system for beauty center. Users can browse services and create appointments.",
+        project2: "Desktop-based travel experience application where visited places are recorded.",
+        project3: "Task planner desktop application built with MVC architecture.",
+        project4: "Database design for veterinarian, customer, pet, and appointment tracking.",
+        project5: "Functional testing application with black-box and Selenium test scenarios.",
+        project6: "Desktop application for digitally managing support requests.",
+        project7: "Pet health tracking and vaccination record application (SwiftUI).",
+        project8: "Mobile health application that provides daily calorie tracking (SwiftUI).",
+        project9: "Inventory and product management system developed with .NET Core.",
+        project10: "Console-based mini applications built with C# and basic OOP principles.",
+        contactTitle: "📨 Contact",
+        emailLabel: "Email:",
+        footerText: "© 2025 Sudenur Arslan. All rights reserved."
       },
-      {
-        title: "Favorite Sites",
-        icon: "📍",
-        desc: "Desktop-based travel experience application where visited places are recorded.",
-        link: "https://github.com/sudenurarslan",
-        tag: "Desktop"
+      tr: {
+        subtitle: "Yazılım Mühendisliği | Web & Mobil Geliştirici",
+        aboutTitle: "👋 Hakkımda",
+        aboutText: "Merhaba! Ben Sudenur, Yaşar Üniversitesi Yazılım Mühendisliği 3. sınıf öğrencisiyim. Web, mobil uygulama geliştirme ve yazılım test otomasyonu konularına ilgi duyuyorum. Takım çalışmasına yatkın, öğrenmeye açık ve gelişime önem veren bir yazılım geliştirici adayıyım.",
+        cvButton: "📄 CV'yi İndir",
+        projectsTitle: "📁 Projelerim",
+        project1: "Güzellik merkezi için online randevu sistemi. Kullanıcılar hizmetleri inceleyip randevu oluşturabilir.",
+        project2: "Gezilen yerlerin kaydedildiği, masaüstü tabanlı seyahat deneyimi uygulaması.",
+        project3: "MVC mimarisiyle yapılmış görev planlayıcı masaüstü uygulama.",
+        project4: "Veteriner, müşteri, evcil hayvan ve randevu takibi için veritabanı tasarımı.",
+        project5: "Black-box ve Selenium test senaryoları ile fonksiyonel test uygulaması.",
+        project6: "Destek taleplerinin dijital olarak yönetildiği masaüstü uygulama.",
+        project7: "Evcil hayvan sağlık takip ve aşı kayıt uygulaması (SwiftUI).",
+        project8: "Günlük kalori takibi sağlayan mobil sağlık uygulaması (SwiftUI).",
+        project9: ".NET Core ile geliştirilmiş stok ve ürün yönetimi sistemi.",
+        project10: "C# ve temel OOP prensipleriyle yapılmış konsol tabanlı mini uygulamalar.",
+        contactTitle: "📨 İletişim",
+        emailLabel: "Email:",
+        footerText: "© 2025 Sudenur Arslan. Tüm hakları saklıdır."
       },
-      {
-        title: "Task Planner",
-        icon: "📆",
-        desc: "Task planner desktop application built with MVC architecture.",
-        link: "https://github.com/sudenurarslan",
-        tag: "Desktop"
-      },
-      {
-        title: "Veterinary Clinic Database",
-        icon: "🐾",
-        desc: "Database design for veterinarian, customer, pet, and appointment tracking.",
-        link: "",
-        tag: "Database"
-      },
-      {
-        title: "Formlakal Test Automation",
-        icon: "✅",
-        desc: "Functional testing application with black-box and Selenium test scenarios.",
-        link: "",
-        tag: "Testing"
-      },
-      {
-        title: "Help Desk",
-        icon: "🛠️",
-        desc: "Desktop application for digitally managing support requests.",
-        link: "https://github.com/sudenurarslan/HelpDesk",
-        tag: "Desktop"
-      },
-      {
-        title: "MyPet",
-        icon: "🐶",
-        desc: "Pet health tracking and vaccination record application (SwiftUI).",
-        link: "https://github.com/sudenurarslan/MyPet",
-        tag: "Mobile"
-      },
-      {
-        title: "CaloMate",
-        icon: "🔥",
-        desc: "Mobile health application that provides daily calorie tracking (SwiftUI).",
-        link: "https://github.com/sudenurarslan/CaloMate_SwiftUI",
-        tag: "Mobile"
-      },
-      {
-        title: "Product Management System",
-        icon: "📦",
-        desc: "Inventory and product management system developed with .NET Core.",
-        link: "https://github.com/sudenurarslan/Akademi_Nisan_ProductManagement",
-        tag: ".NET"
-      },
-      {
-        title: "OOP Exercises",
-        icon: "🧱",
-        desc: "Console-based mini applications built with C# and basic OOP principles.",
-        link: "https://github.com/sudenurarslan/Akademi_Nisan_OOP",
-        tag: "C#"
-      },
-    ];
-
-    const skills = [
-      "Java", "C#", "C/C++", ".NET Core", "SwiftUI",
-      "Flutter (learning)", "HTML", "CSS", "JavaScript",
-      "SQL", "MySQL", "PostgreSQL", "Selenium", "JUnit", "Git/GitHub"
-    ];
-
-    // ---------------------------
-    // NAV / VIEWS
-    // ---------------------------
-    const views = ["dashboard","projects","skills","about","contact","messages","analytics","settings"];
-    const viewEls = Object.fromEntries(views.map(v => [v, document.getElementById("view-" + v)]));
-    const pageTitle = document.getElementById("pageTitle");
-    const pageSubtitle = document.getElementById("pageSubtitle");
-
-    const titles = {
-      dashboard: ["Dashboard Overview", "Quick summary of your portfolio."],
-      projects: ["Projects", "All projects with descriptions and links."],
-      skills: ["Skills & Tech", "Your technical stack and focus areas."],
-      about: ["About", "A short introduction."],
-      contact: ["Contact", "Email and social profiles."],
-      messages: ["Messages", "Demo inbox."],
-      analytics: ["Analytics", "Demo analytics."],
-      settings: ["Settings", "UI placeholders."],
+      de: {
+        subtitle: "Software Engineering | Web- & Mobile-Entwickler",
+        aboutTitle: "👋 Über mich",
+        aboutText: "Hallo! Ich bin Sudenur, Studentin im 3. Jahr Software Engineering an der Yaşar Universität. Ich interessiere mich für Webentwicklung, mobile App-Entwicklung und Software-Testautomatisierung. Ich bin eine angehende Softwareentwicklerin, die teamorientiert ist, lernbereit und kontinuierliche Verbesserung schätzt.",
+        cvButton: "📄 Lebenslauf herunterladen",
+        projectsTitle: "📁 Meine Projekte",
+        project1: "Online-Buchungssystem für Schönheitszentrum. Benutzer können Dienstleistungen durchsuchen und Termine erstellen.",
+        project2: "Desktop-basierte Reiseerlebnis-Anwendung, in der besuchte Orte aufgezeichnet werden.",
+        project3: "Desktop-Anwendung für Aufgabenplanung mit MVC-Architektur entwickelt.",
+        project4: "Datenbankdesign für Tierarzt-, Kunden-, Haustier- und Terminverfolgung.",
+        project5: "Funktionstest-Anwendung mit Black-Box- und Selenium-Testszenarien.",
+        project6: "Desktop-Anwendung zur digitalen Verwaltung von Support-Anfragen.",
+        project7: "Haustier-Gesundheitsverfolgung und Impfaufzeichnungs-Anwendung (SwiftUI).",
+        project8: "Mobile Gesundheits-App für tägliche Kalorienverfolgung (SwiftUI).",
+        project9: "Bestands- und Produktverwaltungssystem entwickelt mit .NET Core.",
+        project10: "Konsolen-basierte Mini-Anwendungen mit C# und grundlegenden OOP-Prinzipien.",
+        contactTitle: "📨 Kontakt",
+        emailLabel: "E-Mail:",
+        footerText: "© 2025 Sudenur Arslan. Alle Rechte vorbehalten."
+      }
     };
 
-    function highlightNav(active) {
-      document.querySelectorAll(".nav-btn").forEach(btn => {
-        const isActive = btn.dataset.view === active;
-        btn.classList.toggle("bg-primarySoft", isActive);
-        btn.classList.toggle("text-primary", isActive);
-        btn.classList.toggle("font-semibold", isActive);
-
-        // reset defaults for non-active
-        if (!isActive) {
-          btn.classList.add("text-muted");
-          btn.classList.remove("text-primary");
-          btn.classList.remove("font-semibold");
-          btn.classList.remove("bg-primarySoft");
-        } else {
-          btn.classList.remove("text-muted");
-        }
-      });
-    }
-
-    function setView(name) {
-      views.forEach(v => viewEls[v].classList.toggle("hidden", v !== name));
-      highlightNav(name);
-      pageTitle.textContent = titles[name][0];
-      pageSubtitle.textContent = titles[name][1];
-      localStorage.setItem("activeView", name);
-    }
-
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-      btn.addEventListener("click", () => setView(btn.dataset.view));
+    document.getElementById("darkToggle").addEventListener("change", function() {
+      document.body.classList.toggle("dark", this.checked);
     });
 
-    // ---------------------------
-    // RENDER: Projects
-    // ---------------------------
-    const grid = document.getElementById("projectsGrid");
-    const search = document.getElementById("projectSearch");
-
-    function projectCard(p) {
-      const linkPart = p.link
-        ? `<a class="text-primary font-semibold hover:underline" href="${p.link}" target="_blank" rel="noreferrer">GitHub →</a>`
-        : `<span class="text-xs text-muted font-semibold">No link</span>`;
-
-      return `
-        <div class="rounded-2xl border border-stroke bg-white p-5 shadow-card hover:-translate-y-0.5 transition">
-          <div class="flex items-start justify-between gap-3">
-            <div class="min-w-0">
-              <div class="font-semibold text-text">${p.icon} ${p.title}</div>
-              <div class="text-sm text-muted mt-1">${p.desc}</div>
-            </div>
-            <span class="shrink-0 text-xs font-semibold px-2 py-1 rounded-full bg-slate-50 border border-stroke text-muted">${p.tag}</span>
-          </div>
-          <div class="mt-4 flex items-center justify-between">
-            ${linkPart}
-            <button class="text-sm text-muted hover:text-text" onclick="alert('Edit action (UI only)')">Edit</button>
-          </div>
-        </div>
-      `;
-    }
-
-    function renderProjects(filterText="") {
-      const ft = filterText.trim().toLowerCase();
-      const list = projects.filter(p =>
-        (p.title + " " + p.desc + " " + p.tag).toLowerCase().includes(ft)
-      );
-      grid.innerHTML = list.map(projectCard).join("");
-      document.getElementById("kpiTotalProjects").textContent = projects.length.toString();
-    }
-
-    search?.addEventListener("input", (e) => renderProjects(e.target.value));
-
-    // ---------------------------
-    // RENDER: Skills
-    // ---------------------------
-    const skillsChips = document.getElementById("skillsChips");
-    function renderSkills() {
-      skillsChips.innerHTML = skills.map(s =>
-        `<span class="px-3 py-1 rounded-full text-sm font-semibold bg-slate-50 border border-stroke text-text">${s}</span>`
-      ).join("");
-      document.getElementById("skillsCount").textContent = skills.length.toString();
-      document.getElementById("kpiTechUsed").textContent = skills.length.toString();
-    }
-
-    // ---------------------------
-    // INIT
-    // ---------------------------
-    renderProjects("");
-    renderSkills();
-
-    const savedView = localStorage.getItem("activeView") || "dashboard";
-    setView(savedView);
+    document.getElementById("languageSelect").addEventListener("change", function() {
+      const selectedLang = this.value;
+      const translation = translations[selectedLang];
+      
+      // Update document language
+      document.documentElement.lang = selectedLang;
+      
+      // Update all translatable elements
+      Object.keys(translation).forEach(key => {
+        const element = document.getElementById(key);
+        if (element) {
+          element.textContent = translation[key];
+        }
+      });
+    });
   </script>
+
 </body>
 </html>
